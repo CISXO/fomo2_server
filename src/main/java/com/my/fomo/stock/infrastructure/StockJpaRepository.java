@@ -12,6 +12,9 @@ public interface StockJpaRepository extends JpaRepository<Stock, String> {
 
     Optional<Stock> findBySymbol(String symbol);
 
-    @Query("SELECT s FROM Stock s WHERE s.name LIKE %:keyword% OR s.nameKr LIKE %:keyword% OR s.symbol LIKE %:keyword%")
+    @Query("SELECT s FROM Stock s JOIN FETCH s.sector JOIN FETCH s.industry ORDER BY s.rank ASC")
+    List<Stock> findAllOrderByRank();
+
+    @Query("SELECT s FROM Stock s JOIN FETCH s.sector JOIN FETCH s.industry WHERE s.name LIKE %:keyword% OR s.nameKr LIKE %:keyword% OR s.symbol LIKE %:keyword% ORDER BY s.rank ASC")
     List<Stock> searchByKeyword(@Param("keyword") String keyword);
 }

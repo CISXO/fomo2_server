@@ -9,7 +9,7 @@ public interface StockRepository {
 
     Optional<Stock> findBySymbol(String symbol);
 
-    List<Stock> findAll();
+    List<Stock> findAllOrderByRank();
 
     List<Stock> searchByKeyword(String keyword);
 }

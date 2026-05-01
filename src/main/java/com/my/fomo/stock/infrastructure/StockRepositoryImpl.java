@@ -25,8 +25,8 @@ public class StockRepositoryImpl implements StockRepository {
     }
 
     @Override
-    public List<Stock> findAll() {
-        return jpaRepository.findAll();
+    public List<Stock> findAllOrderByRank() {
+        return jpaRepository.findAllOrderByRank();
     }
 
     @Override

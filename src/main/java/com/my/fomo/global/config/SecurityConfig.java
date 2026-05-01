@@ -37,6 +37,9 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/user/register", "/api/user/login").permitAll()
                         .requestMatchers("/ws/**").permitAll()
+                        .requestMatchers("/api/companies/**").permitAll()
+                        .requestMatchers("/api/chart/**").permitAll()
+                        .requestMatchers("/api/earnings/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(new JwtAuthenticationFilter(jwtProvider, tokenService),
